@@ -3,8 +3,7 @@ import 'package:e_commerce/core/widgets/text_button.dart';
 import 'package:e_commerce/pages/on_boarding/cubit/on_boarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:page_view_sliding_indicator/page_view_sliding_indicator.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BottomIndicator extends StatelessWidget {
   const BottomIndicator({
@@ -19,16 +18,21 @@ class BottomIndicator extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //? Skip button to navigate to sign in / sign up Screen
-          CustomTextButton(onPressed: () {}, text: 'Skip'),
+          CustomTextButton(
+              onPressed: () {
+                BlocProvider.of<OnBoardingCubit>(context).prevPage();
+              },
+              text: 'Prev'),
           //? The indicatior widget
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: PageViewSlidingIndicator(
-              color: AppColors.white,
-              borderRadius: 5,
-              pageCount: 3,
-              controller: BlocProvider.of<OnBoardingCubit>(context).controller,
-              size: 8,
+          SmoothPageIndicator(
+            controller: BlocProvider.of<OnBoardingCubit>(context).controller,
+            count: 3,
+            effect: const ExpandingDotsEffect(
+              activeDotColor: AppColors.white,
+              dotColor: AppColors.white,
+              dotHeight: 10.0,
+              dotWidth: 10.0,
+              spacing: 5.0,
             ),
           ),
           //? Next button to move to next screen

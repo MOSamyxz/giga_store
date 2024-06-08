@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/constants/colors.dart';
+import 'package:e_commerce/pages/on_boarding/parts/bottom_indicator.dart';
 import 'package:e_commerce/pages/on_boarding/parts/on_boarding_body.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,14 @@ class OnBoardingView extends StatelessWidget {
               end: Alignment.topRight),
         ),
         //? OnBoarding
-        child: const OnBoardingBody(),
+        child: const Column(
+          children: [
+            //? OnBoarding page
+            OnBoardingBody(),
+            //? OnBoarding page indicator
+            BottomIndicator(),
+          ],
+        ),
       ),
     );
   }

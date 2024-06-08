@@ -14,4 +14,14 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     );
     emit(NextScreenChangeState());
   }
+
+  void prevPage() {
+    controller.previousPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.decelerate,
+    );
+    emit(PrevScreenChangeState());
+  }
+
+  void navigatoToSignUp() {}
 }
