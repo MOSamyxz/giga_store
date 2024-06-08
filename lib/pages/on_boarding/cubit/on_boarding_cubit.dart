@@ -6,7 +6,7 @@ part 'on_boarding_state.dart';
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   OnBoardingCubit() : super(OnBoardingInitial());
   final PageController controller = PageController(initialPage: 0);
-
+  int currentIndex = 0;
   void nextPage() {
     controller.nextPage(
       duration: const Duration(milliseconds: 300),
@@ -21,6 +21,11 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
       curve: Curves.decelerate,
     );
     emit(PrevScreenChangeState());
+  }
+
+  void onPageChanged(int i) {
+    currentIndex = i;
+    emit(OnPageChangedState());
   }
 
   void navigatoToSignUp() {}

@@ -12,37 +12,51 @@ class BottomIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //? Skip button to navigate to sign in / sign up Screen
-          CustomTextButton(
-              onPressed: () {
-                BlocProvider.of<OnBoardingCubit>(context).prevPage();
-              },
-              text: 'Prev'),
-          //? The indicatior widget
-          SmoothPageIndicator(
-            controller: BlocProvider.of<OnBoardingCubit>(context).controller,
-            count: 3,
-            effect: const ExpandingDotsEffect(
-              activeDotColor: AppColors.white,
-              dotColor: AppColors.white,
-              dotHeight: 10.0,
-              dotWidth: 10.0,
-              spacing: 5.0,
-            ),
+    return BlocBuilder<OnBoardingCubit, OnBoardingState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //? Skip button to navigate to sign in / sign up Screen
+              CustomTextButton(
+                  color:
+                      BlocProvider.of<OnBoardingCubit>(context).currentIndex ==
+                              0
+                          ? Colors.transparent
+                          : AppColors.white,
+                  onPressed: () {
+                    BlocProvider.of<OnBoardingCubit>(context).prevPage();
+                  },
+                  text: 'Prev'),
+              //? The indicatior widget
+              SmoothPageIndicator(
+                controller:
+                    BlocProvider.of<OnBoardingCubit>(context).controller,
+                count: 3,
+                effect: const ExpandingDotsEffect(
+                  activeDotColor: AppColors.white,
+                  dotColor: AppColors.white,
+                  dotHeight: 10.0,
+                  dotWidth: 10.0,
+                  spacing: 5.0,
+                ),
+              ),
+              //? Next button to move to next screen
+              CustomTextButton(
+                  onPressed: () {
+                    BlocProvider.of<OnBoardingCubit>(context).nextPage();
+                  },
+                  text:
+                      BlocProvider.of<OnBoardingCubit>(context).currentIndex ==
+                              2
+                          ? 'Start'
+                          : 'Next'),
+            ],
           ),
-          //? Next button to move to next screen
-          CustomTextButton(
-              onPressed: () {
-                BlocProvider.of<OnBoardingCubit>(context).nextPage();
-              },
-              text: 'Next'),
-        ],
-      ),
+        );
+      },
     );
   }
 }

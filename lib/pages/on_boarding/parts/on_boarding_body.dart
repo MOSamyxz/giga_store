@@ -1,6 +1,5 @@
-import 'package:e_commerce/core/widgets/space.dart';
 import 'package:e_commerce/pages/on_boarding/cubit/on_boarding_cubit.dart';
-import 'package:e_commerce/pages/on_boarding/parts/on_boarding_deatails.dart';
+import 'package:e_commerce/pages/on_boarding/parts/on_boarding_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,10 +14,12 @@ class OnBoardingBody extends StatelessWidget {
       child: PageView.builder(
         controller: BlocProvider.of<OnBoardingCubit>(context).controller,
         itemCount: 3,
+        onPageChanged: (i) {
+          BlocProvider.of<OnBoardingCubit>(context).onPageChanged(i);
+        },
         itemBuilder: (context, index) {
           return Column(
             children: [
-              const VerticalSpace(height: 60),
               //? OnBoarding image, title and description
               OnBoardingDetails(
                 index: index,
