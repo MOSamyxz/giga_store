@@ -1,5 +1,6 @@
 class AppAssets {
   static const String iconsPath = 'assets/icons';
+  static const String imagesPath = 'assets/images';
 
   // Icons
   static const String back = '$iconsPath/Back.png';
@@ -37,4 +38,8 @@ class AppAssets {
   static const String tShirt = '$iconsPath/T-shirt.png';
   static const String wallet = '$iconsPath/Wallet.png';
 
+// Images
+  static const String onBoardingOne = '$imagesPath/OnBoardingOne.png';
+  static const String onBoardingTwo = '$imagesPath/OnBoardingTwo.png';
+  static const String onBoardingThree = '$imagesPath/OnBoardingThree.png';
 }
