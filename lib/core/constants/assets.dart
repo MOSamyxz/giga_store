@@ -39,6 +39,7 @@ class AppAssets {
   static const String wallet = '$iconsPath/Wallet.png';
 
 // Images
+  static const String logo = '$imagesPath/logo.png';
   static const String onBoardingOne = '$imagesPath/OnBoardingOne.png';
   static const String onBoardingTwo = '$imagesPath/OnBoardingTwo.png';
   static const String onBoardingThree = '$imagesPath/OnBoardingThree.png';
