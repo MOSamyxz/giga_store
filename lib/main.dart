@@ -1,4 +1,6 @@
-import 'package:e_commerce/pages/on_boarding/pages/on_boarding_screen.dart';
+import 'package:e_commerce/core/constants/theme.dart';
+import 'package:e_commerce/core/helper/cache_helper.dart';
+import 'package:e_commerce/core/routes/routs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'firebase_options.dart';
@@ -10,6 +12,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await CacheHelper.init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
@@ -29,10 +32,13 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Giga Store',
-          home: OnBoardingScreen(),
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          initialRoute: Routes.splash,
+          routes: Routes.getRoutes(),
         );
       },
     );
