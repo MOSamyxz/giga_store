@@ -29,7 +29,7 @@ class OnBoardingView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomTextButton(
+                  OnBoardingTextButton(
                       onPressed: () {
                         BlocProvider.of<OnBoardingCubit>(context)
                             .navigatoToSignUp(context);

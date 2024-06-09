@@ -1,8 +1,8 @@
 import 'package:e_commerce/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextButton extends StatelessWidget {
-  const CustomTextButton(
+class OnBoardingTextButton extends StatelessWidget {
+  const OnBoardingTextButton(
       {super.key, required this.onPressed, required this.text, this.color});
   final void Function() onPressed;
   final String text;
