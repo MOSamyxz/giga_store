@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce/core/routes/routs.dart';
+import 'package:e_commerce/core/constants/Strings.dart';
+import 'package:e_commerce/core/helper/cache_helper.dart';
 import 'package:e_commerce/core/routes/slide_route.dart';
+import 'package:e_commerce/pages/auth/sign_up/pages/sign_up_screen.dart';
 import 'package:e_commerce/pages/on_boarding/pages/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -29,7 +31,13 @@ class SplashCubit extends Cubit<SplashState> {
   void initState(BuildContext context) {
     startAnimation();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(context, SlideRoute(page: OnBoardingScreen()));
+      Navigator.pushReplacement(
+          context,
+          SlideRoute(
+              page:
+                  CacheHelper.getString(SharedPrefrencesKeys.onBoarding) == '1'
+                      ? const SignUpScreen()
+                      : const OnBoardingScreen()));
     });
   }
 

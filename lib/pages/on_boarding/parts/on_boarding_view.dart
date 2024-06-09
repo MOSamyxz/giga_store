@@ -1,8 +1,10 @@
 import 'package:e_commerce/core/constants/colors.dart';
 import 'package:e_commerce/core/widgets/text_button.dart';
+import 'package:e_commerce/pages/on_boarding/cubit/on_boarding_cubit.dart';
 import 'package:e_commerce/pages/on_boarding/parts/bottom_indicator.dart';
 import 'package:e_commerce/pages/on_boarding/parts/on_boarding_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({
@@ -27,7 +29,12 @@ class OnBoardingView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomTextButton(onPressed: () {}, text: 'Skip'),
+                  CustomTextButton(
+                      onPressed: () {
+                        BlocProvider.of<OnBoardingCubit>(context)
+                            .navigatoToSignUp(context);
+                      },
+                      text: 'Skip'),
                 ],
               ),
 

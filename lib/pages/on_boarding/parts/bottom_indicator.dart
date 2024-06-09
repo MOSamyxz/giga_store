@@ -46,7 +46,10 @@ class BottomIndicator extends StatelessWidget {
               //? Next button to move to next screen
               CustomTextButton(
                   onPressed: () {
-                    BlocProvider.of<OnBoardingCubit>(context).nextPage();
+                    BlocProvider.of<OnBoardingCubit>(context).currentIndex == 2
+                        ? BlocProvider.of<OnBoardingCubit>(context)
+                            .navigatoToSignUp(context)
+                        : BlocProvider.of<OnBoardingCubit>(context).nextPage();
                   },
                   text:
                       BlocProvider.of<OnBoardingCubit>(context).currentIndex ==

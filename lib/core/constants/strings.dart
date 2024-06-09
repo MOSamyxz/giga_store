@@ -10,3 +10,7 @@ class AppStrings {
   static const String onBoardingThreeDescreption =
       'We use the best-in-class technology to protect any of your\ntransactions on our website.';
 }
+
+class SharedPrefrencesKeys {
+  static const String onBoarding = 'onBoarding';
+}
